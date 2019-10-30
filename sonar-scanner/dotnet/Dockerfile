@@ -1,10 +1,11 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2
 
-RUN dotnet tool install --global dotnet-outdated && \
-    dotnet tool install --global dotnet-sonarscanner && \
-    mv /root/.dotnet /opt
+ENV DOTNET_TOOL_PATH=/opt/.dotnet/tools
 
-ENV PATH="/opt/.dotnet/tools:${PATH}"
+RUN dotnet tool install --tool-path ${DOTNET_TOOL_PATH} dotnet-outdated && \
+    dotnet tool install --tool-path ${DOTNET_TOOL_PATH} dotnet-sonarscanner
+
+ENV PATH="${DOTNET_TOOL_PATH}:${PATH}"
 
 RUN apt update && \
     apt install -y openjdk-8-jre-headless && \
