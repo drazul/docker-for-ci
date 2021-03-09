@@ -1,6 +1,6 @@
 FROM openjdk:11-jre
 
-ENV VERSION 4.2.0.1873-linux
+ENV VERSION 4.6.0.2311-linux
 
 RUN curl -LO https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${VERSION}.zip && \
     unzip sonar-scanner-cli-${VERSION}.zip && \
